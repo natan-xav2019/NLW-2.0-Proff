@@ -49,7 +49,7 @@ export default class ClassesController {
         bio,
         subject,
         cost,
-        shedule
+        schedule
     } = request.body;
 
     const trx = await db.transaction();
@@ -72,12 +72,12 @@ export default class ClassesController {
     
         const class_id = insertedClassesIds[0];
     
-        const classSchedule = shedule.map((sheduleItem: ScheduleItem) => {
+        const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
             return {
                 class_id,
-                week_day: sheduleItem.week_day,
-                from: convertHourToMinutes(sheduleItem.from),
-                to: convertHourToMinutes(sheduleItem.to),
+                week_day: scheduleItem.week_day,
+                from: convertHourToMinutes(scheduleItem.from),
+                to: convertHourToMinutes(scheduleItem.to),
             };
         })
     
